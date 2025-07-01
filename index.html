@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Classifier</title>
+    <style>
+        body {
+            background-color: #fffbe7;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            color: #ff77aa;
+        }
+        input, button {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 12px;
+            border: 2px solid #ffb22c;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌈 Emotion Checker 💖</h1>
+    <input type="text" id="textInput" placeholder="Type your message here..." required />
+    <button onclick="checkEmotion()">Check Emotion</button>
+    <div id="result"></div>
+
+    <script>
+        async function checkEmotion() {
+            const input = document.getElementById("textInput").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (!input) {
+                resultDiv.innerText = "⚠️ Please type a message.";
+                return;
+            }
+
+            console.log("📤 Sending:", input);
+
+            try {
+                const response = await fetch(`http://localhost:10000/predict?text=${encodeURIComponent(input)}`);
+                if (!response.ok) {
+                    throw new Error(`Server responded with ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log("✅ Server response:", data);
+                resultDiv.innerText = data.emotion;
+            } catch (err) {
+                console.error("❌ Error:", err);
+                resultDiv.innerText = "⚠️ Something went wrong. Check if the server is running.";
+            }
+        }
+    </script>
+</body>
+</html>
