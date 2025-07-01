@@ -2,7 +2,6 @@
 
 A simple web server that classifies text-based emotion input using Raku and the Cro HTTP framework. This project was built as part of an exploration into niche programming languages and experimental tech stacks.
 
----
 
 ## 🚀 Features
 
@@ -12,7 +11,6 @@ A simple web server that classifies text-based emotion input using Raku and the 
 - Clean and minimal server-side logic
 - Great for learning web servers, NLP, or working with Raku
 
----
 
 ## 🧠 Tech Stack
 
@@ -21,7 +19,6 @@ A simple web server that classifies text-based emotion input using Raku and the 
 - **Parser/Classifier:** Simple keyword-based emotion mapping  
 - *(Optional)* Terminal/CLI for logs and server interaction
 
----
 
 ## 🧪 How It Works
 
